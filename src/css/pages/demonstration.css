@@ -1,0 +1,18 @@
+.cont{
+    height:100vh;
+    display:grid;
+}
+.slider{
+    display:grid;
+    align-content:center;
+    background:black;
+font-size:0;
+}
+img{
+    width:100%;
+    height:auto;
+    max-height:100vh;
+    object-fit: cover;
+  
+    margin: 0 auto;
+}
