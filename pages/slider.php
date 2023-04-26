@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="/src/css/global.css?v=1">
     <link rel="stylesheet" href="/src/css/pages/demonstration.css?v=1">
 </head>
-<body>
+<body style="overflow: hidden">
     <div class="cont">
         <div class="slider" id="slider" style="opacity=100%; transition:1s;">
             
@@ -25,7 +25,7 @@
 
             arrImg = JSON.parse(data['arrImg']);
             let arrFoldersImg = JSON.parse(data['arrFoldersImg']);
-            console.log(arrFoldersImg);
+            // console.log(arrFoldersImg);
           //  console.log(arrImg);
         const arrImgElem = [];
         const arrFoldElem = [];
@@ -94,7 +94,8 @@
 
         let count = 0;
         let countFolder = 0;
-        let animTime = 5000;
+        //Время анимации цельного слайда сеточные слайды в 5 раз дольше(каждый слайд по такому же количеству времени)
+        let animTime = 15000;
         let animaFolder = false;
         let maxImg = arrImgElem.length;
         let maxFolder = arrFoldElem.length;
@@ -148,17 +149,16 @@
                 }
                 else{
                     isFullSize=false;
-                    minSizeGrid(images[minImagesCount], minImagesCount);
+                    minSizeGrid(images[minImagesCount]);
                     minImagesCount++;
                     setTimeout(callbackTimeoutResize, animTime/2);
                 }
             }
             setTimeout(callbackTimeoutResize, animTime/2)
-            console.log(images);
         }
         renderImg();
         function callbackTimeout() {
-            if(count % 1 == 0 && !animaFolder){
+            if(count % 5 == 0 && !animaFolder){
                 animaFolder = true;
                 console.log("кратное");
                 renderFolder();
@@ -176,15 +176,15 @@
             elem.style.width = `100vw`;
             elem.style.height= `100vh`;
             switch (countElem){
-                case 1: elem.style.transform= `translateX(-50%)`
+                case 1: elem.style.transform= `translateX(-50%)`;
                     break;
-                case 2: elem.style.transform= `translateY(-50%)`
+                case 2: elem.style.transform= `translateY(-50%)`;
                     break;
-                case 3: elem.style.transform= `translate(-50%, -50%)`
+                case 3: elem.style.transform= `translate(-50%, -50%)`;
                     break;
             }
         }
-        function minSizeGrid(elem, countElem) {
+        function minSizeGrid(elem) {
 
             elem.style.width = `100%`;
             elem.style.height= `50vh`;
