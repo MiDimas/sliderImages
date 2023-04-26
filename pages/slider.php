@@ -70,6 +70,27 @@
                 justify-content: flex-start;
                 flex-wrap: wrap;
             `;
+
+            //Проверка на количество элементов в папке приведение к стандартному количеству(4)
+            if (!arrFoldersImg[value].length) {
+                return;
+            }
+            if (arrFoldersImg[value].length > 4){
+                arrFoldersImg[value] = arrFoldersImg[value].slice(0, 4);
+            }
+            else if(arrFoldersImg[value].length < 4){
+                let countElem = 0;
+                const maxCountElem = arrFoldersImg[value].length;
+                while (arrFoldersImg[value].length < 4){
+                    arrFoldersImg[value].push(arrFoldersImg[value][countElem]);
+                    countElem++ ;
+                    if(countElem >= maxCountElem){
+                        countElem = 0;
+                    }
+                }
+            }
+            //Конец проверок на количество элементов в папках
+            //Размещение элементов из папок сеткой из 4х элементов
             for(let img of arrFoldersImg[value]){
                 const divBase = document.createElement("div");
                 const myImg = document.createElement("img");
@@ -86,9 +107,11 @@
                 divBase.append(myImg);
                 divGridImg.append(divBase);
             }
+            //Конец раззмещения элементов
             arrFoldElem.push(divGridImg);
+            console.log(arrFoldElem)
             slider.append(divGridImg);
-
+        //    Конец размещения слайда
         });
 
 
