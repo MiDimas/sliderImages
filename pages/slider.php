@@ -18,12 +18,14 @@
     <script>
         
     function foo(){
+        const arrImgElem = [];
+        const arrFoldElem = [];
         slider.innerHTML = 0;
         fetch("/system/api/get-image.php")
         .then(r=>r.json())
         .then(data => {
 
-            arrImg = JSON.parse(data['arrImg']);
+            const arrImg = JSON.parse(data['arrImg']);
 
             let arrFoldersImg;
             if(data['arrFoldersImg']) {
@@ -31,8 +33,6 @@
             }
             // console.log(arrFoldersImg);
           //  console.log(arrImg);
-        const arrImgElem = [];
-        const arrFoldElem = [];
         for(let img of arrImg){
             
             const myImg = document.createElement("img");
@@ -154,6 +154,12 @@
                 count = 0;
             }
             arrImgElem[count].style.display = "block";
+            if(arrImgElem[count].naturalHeight >arrImgElem[count].naturalWidth){
+                arrImgElem[count].style.height = "100%";
+                arrImgElem[count].style.width = "auto";
+
+                console.log("h");
+            }
         }
         function renderFolder(){
             arrImgElem[count].style.display = "none";
@@ -224,9 +230,13 @@
         setTimeout(callbackTimeout, animTime);
 
         })
+
     }
-    foo()
-    setInterval(foo, 3600000);
+    window.addEventListener("load", () =>{
+        foo();
+        setInterval(foo, 3600000);
+    });
+
         
         
     
