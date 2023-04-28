@@ -181,16 +181,16 @@
                 if(!isFullSize){
                     isFullSize = true;
                     fullSizeGrid(images[minImagesCount], minImagesCount);
-                    setTimeout(callbackTimeoutResize, animTime/2);
+                    setTimeout(callbackTimeoutResize, animTime/4);
                 }
                 else{
                     isFullSize=false;
                     minSizeGrid(images[minImagesCount]);
                     minImagesCount++;
-                    setTimeout(callbackTimeoutResize, animTime/2);
+                    setTimeout(callbackTimeoutResize, animTime/7);
                 }
             }
-            setTimeout(callbackTimeoutResize, animTime/2)
+            setTimeout(callbackTimeoutResize, animTime/7)
         }
         renderImg();
         function callbackTimeout() {
@@ -198,7 +198,7 @@
                 animaFolder = true;
                 console.log("кратное");
                 renderFolder();
-                setTimeout(callbackTimeout, animTime*5)
+                setTimeout(callbackTimeout, animTime*1.7)
             }
             else {
                 animaFolder = false;
