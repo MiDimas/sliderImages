@@ -96,6 +96,9 @@
                 //Конец проверок на количество элементов в папках
                 //Размещение элементов из папок сеткой из 4х элементов
                 for (let img of arrFoldersImg[value]) {
+                    const divDescCont = document.createElement('div');
+                    const spanCont = document.createElement('span');
+                    const spanDesc = document.createElement('span');
                     const divBase = document.createElement("div");
                     const myImg = document.createElement("img");
                     myImg.src = `/src/img/${value}/${img}`;
@@ -108,12 +111,34 @@
                         width: 100%;
                         transition: all 1s ease;
                     `;
+                    divDescCont.style.cssText = `
+                        position: absolute;
+                        top: 0px;
+                        left: 0px;
+                        width: 100vw;
+                        z-index: 3;
+                        display: flex;
+                        justify-content: center;
+                    `;
+                    spanCont.style.cssText = `
+                        backdrop-filter: blur(25px);
+                        border-radius: 0 0 30px 30px;
+                        padding: 20px 30px;
+                        text-align: center;
+                    `;
+                    spanDesc.style.cssText = `
+                        font-size: 3rem;
+                        color: white;
+                        font-family: 'Montserrat', sans-serif;
+                    `;
+                    spanDesc.innerText = `${value}`;
                     divBase.append(myImg);
-                    divGridImg.append(divBase);
+                    spanCont.append(spanDesc);
+                    divDescCont.append(spanCont);
+                    divGridImg.append(divBase, divDescCont);
                 }
                 //Конец раззмещения элементов
                 arrFoldElem.push(divGridImg);
-                console.log(arrFoldElem)
                 slider.append(divGridImg);
                 //    Конец размещения слайда
             });
