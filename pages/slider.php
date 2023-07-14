@@ -121,13 +121,14 @@
                         justify-content: center;
                     `;
                     spanCont.style.cssText = `
-                        backdrop-filter: blur(25px);
+                        background-color: #0000003f;
                         border-radius: 0 0 30px 30px;
                         padding: 20px 30px;
                         text-align: center;
                     `;
                     spanDesc.style.cssText = `
-                        font-size: 3rem;
+                        font-size: 4rem;
+                        font-weight: 900;
                         color: white;
                         font-family: 'Montserrat', sans-serif;
                     `;
