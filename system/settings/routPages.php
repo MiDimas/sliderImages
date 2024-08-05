@@ -2,10 +2,11 @@
 
 $pages = [
     "/" => "slider",
-    "/demonstration" => "slider"
-    
+    "/demonstration" => "slider",
+    "/army" => "sliderPatri",
+    "/zoomer" => "sliderZoomer"
 
-    
+
 ];
 
 
@@ -18,4 +19,3 @@ foreach($pages as $key => $value){
     }
 
 }
-
